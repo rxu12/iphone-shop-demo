@@ -1,0 +1,2 @@
+project_code: "{{ environment_variable.APPSVC_NAME }}"
+region: ap-southeast-2

@@ -1,0 +1,35 @@
+.tile-container {
+  border: 1px #e9e9eb solid;
+  width: 189px;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  padding: 5px;
+}
+
+@media (max-width: 600px) {
+  .tile-container {
+    width: 139px;
+  }
+  .image-container img {
+    width: 129px;
+  }
+}
+
+.price-tag {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ef7869;
+  line-height: 1;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  margin: 5px 0;
+}
+
+.specs {
+  display: flex;
+  justify-content: space-between;
+}

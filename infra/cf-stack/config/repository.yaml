@@ -1,0 +1,4 @@
+template_path: ./repository.yaml
+
+parameters:
+  RepositoryName: "{{ environment_variable.APPSVC_NAME }}"

@@ -1,0 +1,10 @@
+template_path: ./service.yaml
+
+parameters:
+  AppName: "{{ environment_variable.APPSVC_NAME }}"
+  Cluster: !stack_output ecs/cluster.yaml::Cluster
+  Listener: !stack_output ecs/cluster.yaml::Listener
+  Path: "/"
+  ContainerPort: "9000"
+  ECRImageRef: "{{ environment_variable.IAM_ACCOUNT }}.dkr.ecr.ap-southeast-2.amazonaws.com/{{ environment_variable.APPSVC_NAME }}:{{ environment_variable.APPSVC_VERSION }}"
+  ECSServiceAutoScalingRoleARN: !stack_output ecs/cluster.yaml::ECSServiceAutoScalingRoleArn

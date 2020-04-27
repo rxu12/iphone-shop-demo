@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone SE",
+    "color": "Silver",
+    "capacity": "16GB",
+    "price": 629,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/AIP11P256S_iphone_11_pro_256gb_silver.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 2,
+    "name": "iPhone SE",
+    "color": "Silver",
+    "capacity": "64GB",
+    "price": 829,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/AIP11P256S_iphone_11_pro_256gb_silver.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 3,
+    "name": "iPhone SE",
+    "color": "Gold",
+    "capacity": "16GB",
+    "price": 629,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/IP732GD_iphone_7_32gb_gold.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 4,
+    "name": "iPhone SE",
+    "color": "Gold",
+    "capacity": "64GB",
+    "price": 829,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/IP732GD_iphone_7_32gb_gold.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 5,
+    "name": "iPhone SE",
+    "color": "Space Grey",
+    "capacity": "16GB",
+    "price": 629,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/AIP6SP32Y_iphone_6s_plus_32gb_space_grey.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 6,
+    "name": "iPhone SE",
+    "color": "Space Grey",
+    "capacity": "64GB",
+    "price": 829,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/AIP6SP32Y_iphone_6s_plus_32gb_space_grey.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 7,
+    "name": "iPhone SE",
+    "color": "Rose Gold",
+    "capacity": "16GB",
+    "price": 629,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/IP732RG_iphone_7_32gb_rose_gold.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  },
+  {
+    "id": 8,
+    "name": "iPhone SE",
+    "color": "Rose Gold",
+    "capacity": "64GB",
+    "price": 829,
+    "imgUrl": "https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/IP732RG_iphone_7_32gb_rose_gold.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+  }
+]

@@ -1,0 +1,15 @@
+/*
+
+Create a full width layout using flex box CSS properties.
+
+Add any additional CSS rules to style the form and search results output.
+
+*/
+
+.page {
+  color: #505050;
+}
+
+.hr {
+  border-bottom: 1px #e9e9eb solid;
+}

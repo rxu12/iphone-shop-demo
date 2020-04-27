@@ -1,0 +1,7 @@
+template_path: ./cluster.yaml
+
+parameters:
+  AppName: "{{ environment_variable.APPSVC_NAME }}"
+  DefaultALBSubnets:
+    - "subnet-e8ad408e"
+    - "subnet-e9d5caa0"

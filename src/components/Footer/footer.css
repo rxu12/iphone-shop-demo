@@ -1,0 +1,16 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #e9e9eb;
+  width: 100%;
+}
+
+.footer a {
+  margin-left: 1%;
+}
+
+@media (max-width: 600px) {
+  .footer p {
+    margin: 0;
+  }
+}
