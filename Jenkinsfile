@@ -13,7 +13,7 @@ pipeline {
         APPSVC_VERSION = "${env.BUILD_NUMBER}"
         AZURE_CRED_ID = "jenkinsSP"
         RES_GROUP = "jenkins-resource-grp"
-        WEB_APP = APPSVC_NAME
+        WEB_APP = "iphone-search"
     }
 
     stages {
