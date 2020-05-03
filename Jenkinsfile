@@ -11,22 +11,24 @@ pipeline {
         HOME = '.'
         APPSVC_NAME = "iphone-search"
         APPSVC_VERSION = "${env.BUILD_NUMBER}"
-        IAM_ACCOUNT = 798164203821
+        AZURE_CRED_ID = "jenkinsSP"
+        RES_GROUP = "jenkins-resource-grp"
+        WEB_APP = APPSVC_NAME
     }
 
     stages {
-        stage('Setup ECR') {
-            when {
-                anyOf {
-                    branch 'master'
-                }
-            }
-            steps {
-                dir('infra/cf-stack') {
-                    sh "sceptre launch -y repository"
-                }
-            }
-        }
+        // stage('Setup ECR') {
+        //     when {
+        //         anyOf {
+        //             branch 'master'
+        //         }
+        //     }
+        //     steps {
+        //         dir('infra/cf-stack') {
+        //             sh "sceptre launch -y repository"
+        //         }
+        //     }
+        // }
 
         stage('Install npm packages') {
             steps {
@@ -40,31 +42,31 @@ pipeline {
             }
         }
 
-        stage('Build Docker Containers') {
-            steps {
-                dir('infra/bash/') {
-                    sh "chmod +x ./build.sh"
-                    sh "./build.sh"
-                }
-            }
-        }
+        // stage('Build Docker Containers') {
+        //     steps {
+        //         dir('infra/bash/') {
+        //             sh "chmod +x ./build.sh"
+        //             sh "./build.sh"
+        //         }
+        //     }
+        // }
         
-        stage('Push To ECR') {
-            steps {
-                dir('infra/bash/') {
-                    sh "chmod +x ./push-ecr.sh"
-                    sh "./push-ecr.sh"
-                }
-            }
-        }
+        // stage('Push To ECR') {
+        //     steps {
+        //         dir('infra/bash/') {
+        //             sh "chmod +x ./push-ecr.sh"
+        //             sh "./push-ecr.sh"
+        //         }
+        //     }
+        // }
 
-        stage('Deploy To ECS') {
-            steps {
-                dir('infra/cf-stack') {
-                    sh "chmod +x ../bash/deploy.sh"
-                    sh "../bash/deploy.sh ecs"
-                }
-            }
-        }
+        // stage('Deploy To ECS') {
+        //     steps {
+        //         dir('infra/cf-stack') {
+        //             sh "chmod +x ../bash/deploy.sh"
+        //             sh "../bash/deploy.sh ecs"
+        //         }
+        //     }
+        // }
     }
 }
