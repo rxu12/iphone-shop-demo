@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'xrayray/nodejs-terraform-azure:1.0.0'
+            image 'xrayray/nodejs-terraform-azure:1.1.3'
             args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/local/bin/docker'
         }
     }
