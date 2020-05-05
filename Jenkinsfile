@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 dir('infra/azurerm') {
-                    sh "sudo terraform init & terraform apply"
+                    sh "sudo terraform init & sudo terraform apply"
                 }
             }
         }
