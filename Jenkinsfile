@@ -24,8 +24,8 @@ pipeline {
                 }
             }
             steps {
-                dir('infra/azurerm') {
-                    sh "chmod +x ."
+                dir('infra') {
+                    sh "chmod +x ./"
                     sh "terraform init & terraform apply"
                 }
             }
