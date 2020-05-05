@@ -1,44 +1,44 @@
-#!/usr/bin/env groovy test123
+#!/usr/bin/env groovy
 pipeline {
     agent {
         docker {
-            image 'xrayray/nodejs-sceptre:v1.25'
+            image 'xrayray/nodejs-terraform-azure:latest'
             args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/local/bin/docker'
         }
     }
 
     environment {
         HOME = '.'
-        APPSVC_NAME = "iphone-search"
         APPSVC_VERSION = "${env.BUILD_NUMBER}"
-        AZURE_CRED_ID = "jenkinsSP"
-        RES_GROUP = "jenkins-resource-grp"
-        WEB_APP = "iphone-search"
+        AZURE_CRED_ID = 'jenkinsSP'
+        RES_GROUP = 'jenkins-resource-grp'
+        WEB_APP = 'iphone-search'
+        TF_VAR_app_name = "${WEB_APP}"
     }
 
     stages {
-        // stage('Setup ECR') {
-        //     when {
-        //         anyOf {
-        //             branch 'master'
-        //         }
-        //     }
-        //     steps {
-        //         dir('infra/cf-stack') {
-        //             sh "sceptre launch -y repository"
-        //         }
-        //     }
-        // }
+        stage('Setup ECR') {
+            when {
+                anyOf {
+                    branch 'master'
+                }
+            }
+            steps {
+                dir('infra/azurerm') {
+                    sh "terraform init & terraform apply"
+                }
+            }
+        }
 
         stage('Install npm packages') {
             steps {
-                sh "npm install"
+                sh 'npm install'
             }
         }
 
         stage('Unit Test') {
             steps {
-                sh "npm run test:ci"
+                sh 'npm run test:ci'
             }
         }
 
@@ -50,7 +50,7 @@ pipeline {
         //         }
         //     }
         // }
-        
+
         // stage('Push To ECR') {
         //     steps {
         //         dir('infra/bash/') {
@@ -60,13 +60,13 @@ pipeline {
         //     }
         // }
 
-        // stage('Deploy To ECS') {
-        //     steps {
-        //         dir('infra/cf-stack') {
-        //             sh "chmod +x ../bash/deploy.sh"
-        //             sh "../bash/deploy.sh ecs"
-        //         }
-        //     }
-        // }
+    // stage('Deploy To ECS') {
+    //     steps {
+    //         dir('infra/cf-stack') {
+    //             sh "chmod +x ../bash/deploy.sh"
+    //             sh "../bash/deploy.sh ecs"
+    //         }
+    //     }
+    // }
     }
 }
