@@ -25,6 +25,7 @@ pipeline {
             }
             steps {
                 dir('infra') {
+                    sh "chmod -R +x ./"
                     sh "./bash/setup-acr.sh"
                 }
             }
