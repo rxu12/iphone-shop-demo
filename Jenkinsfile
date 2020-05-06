@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('infra/azurerm') {
                     sh "chmod -R +x ./"
-                    sh "terraform init"
+                    sh "terraform init -upgrade"
                     sh "terraform apply"
                 }
             }
