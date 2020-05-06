@@ -25,8 +25,12 @@ pipeline {
             }
             steps {
                 dir('infra') {
-                    sh "chmod -R +x ./"
-                    sh "./bash/setup-acr.sh"
+                    withCredentials(
+                        [ azureServicePrincipal('azure-jenkins-sp') ]
+                    ) {
+                        sh 'chmod -R +x ./'
+                        sh './bash/setup-acr.sh'
+                    }
                 }
             }
         }
