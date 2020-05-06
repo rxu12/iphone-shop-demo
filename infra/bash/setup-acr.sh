@@ -1,8 +1,8 @@
-echo "My client id is $AZURE_CLIENT_ID"
-echo "My client secret is $AZURE_CLIENT_SECRET"
-echo "My tenant id is $AZURE_TENANT_ID"
-echo "My subscription id is $AZURE_SUBSCRIPTION_ID"
-az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+# az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+export ARM_CLIENT_ID=$AZURE_CLIENT_ID
+export ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET
+export ARM_SUBSCRIPTION_ID=$AZURE_SUBSCRIPTION_ID
+export ARM_TENANT_ID=$AZURE_TENANT_ID
 cd ./azurerm
 terraform init -upgrade
 terraform apply
