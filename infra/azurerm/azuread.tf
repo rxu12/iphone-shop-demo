@@ -7,6 +7,7 @@ resource "azuread_service_principal" "default" {
 }
 
 resource "random_string" "password" {
+  id = "sp_password"
   length  = 32
   special = true
 }

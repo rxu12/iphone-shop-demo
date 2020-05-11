@@ -13,7 +13,6 @@ pipeline {
         AZURE_CRED_ID = 'jenkinsSP'
         RES_GROUP = 'jenkins-resource-grp'
         WEB_APP = 'iphone-search'
-        TF_LOG = 'INFO'
         TF_VAR_app_name = "${WEB_APP}"
     }
 
