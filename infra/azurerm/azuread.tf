@@ -6,8 +6,7 @@ resource "azuread_service_principal" "default" {
   application_id = azuread_application.default.application_id
 }
 
-resource "random_string" "password" {
-  id = "sp_password"
+resource "random_password" "password" {
   length  = 32
   special = true
 }
