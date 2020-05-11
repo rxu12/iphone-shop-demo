@@ -59,8 +59,12 @@ pipeline {
         stage('Push To ECR') {
             steps {
                 dir('infra/bash/') {
-                    sh 'chmod +x ./push-acr.sh'
-                    sh './push-acr.sh'
+                    withCredentials(
+                        [ azureServicePrincipal('azure-jenkins-sp') ]
+                    ) {
+                        sh 'chmod +x ./push-acr.sh'
+                        sh './push-acr.sh'
+                    }
                 }
             }
         }
