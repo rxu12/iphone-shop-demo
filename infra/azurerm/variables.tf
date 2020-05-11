@@ -11,9 +11,3 @@ variable "location" {
   description = "Location of the azure resource group."
   default     = "EastUS"
 }
-
-variable "dns_prefix" {
-  type        = string
-  description = "DNS Prefix"
-  default     = "tfq"
-}

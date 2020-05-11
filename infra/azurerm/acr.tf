@@ -1,5 +1,5 @@
 locals {
-  acr_name = "${replace(var.dns_prefix, "-", "")}${replace(var.app_name, "-", "")}acr"
+  acr_name = "${replace(var.app_name, "-", "")}_acr"
 }
 resource "azurerm_container_registry" "default" {
   name                     = local.acr_name

@@ -35,35 +35,35 @@ pipeline {
             }
         }
 
-        stage('Install npm packages') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Unit Test') {
-            steps {
-                sh 'npm run test:ci'
-            }
-        }
-
-        // stage('Build Docker Containers') {
+        // stage('Install npm packages') {
         //     steps {
-        //         dir('infra/bash/') {
-        //             sh "chmod +x ./build.sh"
-        //             sh "./build.sh"
-        //         }
+        //         sh 'npm install'
         //     }
         // }
 
-        // stage('Push To ECR') {
+        // stage('Unit Test') {
         //     steps {
-        //         dir('infra/bash/') {
-        //             sh "chmod +x ./push-ecr.sh"
-        //             sh "./push-ecr.sh"
-        //         }
+        //         sh 'npm run test:ci'
         //     }
         // }
+
+        stage('Build Docker Containers') {
+            steps {
+                dir('infra/bash/') {
+                    sh 'chmod +x ./build.sh'
+                    sh './build.sh'
+                }
+            }
+        }
+
+        stage('Push To ECR') {
+            steps {
+                dir('infra/bash/') {
+                    sh 'chmod +x ./push-acr.sh'
+                    sh './push-acr.sh'
+                }
+            }
+        }
 
     // stage('Deploy To ECS') {
     //     steps {
