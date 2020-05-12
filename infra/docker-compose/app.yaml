@@ -4,4 +4,4 @@ services:
     build:
       context: ../../
       dockerfile: Dockerfile
-    image: "${IAM_ACCOUNT}.dkr.ecr.ap-southeast-2.amazonaws.com/${APPSVC_NAME:-iphone-search}:${APPSVC_VERSION:-latest}"
+    image: "${ACR_URL}/${WEB_APP:-iphone-search}:${APPSVC_VERSION:-latest}"

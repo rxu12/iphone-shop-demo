@@ -13,7 +13,9 @@ pipeline {
         AZURE_CRED_ID = 'jenkinsSP'
         RES_GROUP = 'jenkins-resource-grp'
         WEB_APP = 'iphone-search'
-        TF_VAR_app_name = "${WEB_APP}"
+        TF_VAR_APP_NAME = "${WEB_APP}"
+        TF_VAR_APP_ACR_NAME = "${WEB_APP.replace("-", "")}acr"
+        ACR_URL = "${TF_VAR_APP_ACR_NAME}.azurecr.io"
     }
 
     stages {
