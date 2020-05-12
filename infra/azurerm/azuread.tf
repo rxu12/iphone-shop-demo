@@ -1,5 +1,5 @@
 resource "azuread_application" "default" {
-  name = "${var.APP_ACR_NAME}-ad-app"
+  name = "${var.app_name}-ad-app"
 }
 
 resource "azuread_service_principal" "default" {

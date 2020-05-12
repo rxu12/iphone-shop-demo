@@ -18,6 +18,6 @@ data "azurerm_subscription" "current" {}
 
 # The main resource group for this deployment
 resource "azurerm_resource_group" "default" {
-  name     = "${var.APP_ACR_NAME}-rg"
+  name     = "${var.app_name}-rg"
   location = var.location
 }
