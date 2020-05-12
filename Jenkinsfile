@@ -49,14 +49,14 @@ pipeline {
         //     }
         // }
 
-        // stage('Build Docker Containers') {
-        //     steps {
-        //         dir('infra/bash/') {
-        //             sh 'chmod +x ./build.sh'
-        //             sh './build.sh'
-        //         }
-        //     }
-        // }
+        stage('Build Docker Containers') {
+            steps {
+                dir('infra/bash/') {
+                    sh 'chmod +x ./build.sh'
+                    sh './build.sh'
+                }
+            }
+        }
 
         stage('Push To ECR') {
             steps {
