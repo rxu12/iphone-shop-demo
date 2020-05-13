@@ -4,4 +4,4 @@ services:
     build:
       context: ../../
       dockerfile: Dockerfile
-    image: "${ACR_URL}/${WEB_APP:-iphone-search}:${APPSVC_VERSION:-latest}"
+    image: "${TF_VAR_ACR_LINK}/${WEB_APP:-iphone-search}:${APPSVC_VERSION:-latest}"
