@@ -1,7 +1,7 @@
 resource "azurerm_app_service_plan" "default" {
   name                = "${var.app_name}-asp"
-  location            = "${azurerm_resource_group.default.location}"
-  resource_group_name = "${azurerm_resource_group.default.name}"
+  location            = azurerm_resource_group.default.location
+  resource_group_name = azurerm_resource_group.default.name
   kind                = "Linux"
   reserved            = true
 
@@ -14,9 +14,9 @@ resource "azurerm_app_service_plan" "default" {
 # This creates the service definition
 resource "azurerm_app_service" "default" {
   name                = "${var.app_name}-app-service"
-  location            = "${azurerm_resource_group.default.location}"
-  resource_group_name = "${azurerm_resource_group.default.name}"
-  app_service_plan_id = "${azurerm_app_service_plan.default.id}"
+  location            = azurerm_resource_group.default.location
+  resource_group_name = azurerm_resource_group.default.name
+  app_service_plan_id = azurerm_app_service_plan.default.id
 
   site_config {
     app_command_line = ""
