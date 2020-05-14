@@ -6,5 +6,5 @@ export ARM_TENANT_ID=$AZURE_TENANT_ID
 
 cd ./azurerm/$1
 terraform init -input=false -upgrade
-terrafrom plan
+terraform plan
 terraform apply -input=false -auto-approve
