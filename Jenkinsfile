@@ -73,14 +73,14 @@ pipeline {
             }
         }
 
-        stage('Deploy To ECS') {
+        stage('Deploy To APP SVC') {
             steps {
                 dir('infra/bash/') {
                     withCredentials(
                         [ azureServicePrincipal('azure-jenkins-sp') ]
                     ) {
-                        sh "chmod +x ./bash/tfRun.sh"
-                        sh "./bash/tfRun.sh as"
+                        sh "chmod +x ./tfRun.sh"
+                        sh "./tfRun.sh as"
                     }
                 }
             }
