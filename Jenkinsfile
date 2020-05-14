@@ -75,7 +75,7 @@ pipeline {
 
         stage('Deploy To ECS') {
             steps {
-                dir('infra/cf-stack') {
+                dir('infra') {
                     sh "chmod +x ../bash/tfRun.sh"
                     sh "../bash/tfRun.sh as"
                 }
