@@ -15,7 +15,7 @@ pipeline {
         WEB_APP = 'iphone-search'
         TF_VAR_app_name = "${WEB_APP}"
         TF_VAR_app_acr_name = "${WEB_APP.replace("-", "")}acr"
-        TF_VAR_ACR_LINK = "${TF_VAR_app_acr_name}.azurecr.io"
+        TF_VAR_acr_link = "${TF_VAR_app_acr_name}.azurecr.io"
         TF_VAR_docker_image_tag = "${env.BUILD_NUMBER}"
     }
 
