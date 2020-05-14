@@ -20,7 +20,7 @@ pipeline {
     }
 
     stages {
-        stage('Setup ECR') {
+        stage('Create Resource Group & ACR') {
             when {
                 anyOf {
                     branch 'master'
@@ -32,7 +32,8 @@ pipeline {
                         [ azureServicePrincipal('azure-jenkins-sp') ]
                     ) {
                         sh 'chmod -R +x ./'
-                        sh './bash/setup-acr.sh'
+                        sh './bash/tfRun.sh rg'
+                        sh './bash/tfRun.sh acr'
                     }
                 }
             }
@@ -59,7 +60,7 @@ pipeline {
             }
         }
 
-        stage('Push To ECR') {
+        stage('Push To ACR') {
             steps {
                 dir('infra/bash/') {
                     withCredentials(
@@ -72,13 +73,13 @@ pipeline {
             }
         }
 
-    // stage('Deploy To ECS') {
-    //     steps {
-    //         dir('infra/cf-stack') {
-    //             sh "chmod +x ../bash/deploy.sh"
-    //             sh "../bash/deploy.sh ecs"
-    //         }
-    //     }
-    // }
+        stage('Deploy To ECS') {
+            steps {
+                dir('infra/cf-stack') {
+                    sh "chmod +x ../bash/tfRun.sh"
+                    sh "../bash/tfRun.sh as"
+                }
+            }
+        }
     }
 }
