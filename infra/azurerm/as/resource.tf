@@ -61,5 +61,6 @@ resource "azurerm_app_service" "default" {
     DOCKER_REGISTRY_SERVER_URL          = "https://${var.acr_link}"
 
     # app specific environment variables can be defined in this block as well
+    WEBSITES_PORT = 9000
   }
 }
