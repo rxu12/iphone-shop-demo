@@ -35,7 +35,10 @@ resource "azurerm_app_service_plan" "default" {
   location            = data.azurerm_resource_group.default.location
   resource_group_name = data.azurerm_resource_group.default.name
   kind                = "Linux"
-  reserved            = true
+
+  properties {
+    reserved = true
+  }
 
   sku {
     tier = "Standard"
@@ -49,7 +52,6 @@ resource "azurerm_app_service" "default" {
   location            = data.azurerm_resource_group.default.location
   resource_group_name = data.azurerm_resource_group.default.name
   app_service_plan_id = azurerm_app_service_plan.default.id
-  kind                = "Linux"
 
   site_config {
     app_command_line = ""
@@ -59,12 +61,8 @@ resource "azurerm_app_service" "default" {
 
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
-    "DOCKER_REGISTRY_SERVER_URL"        = "https://${var.acr_link}"
+    DOCKER_REGISTRY_SERVER_URL        = "https://${var.acr_link}"
 
     # app specific environment variables can be defined in this block as well
-  }
-
-  properties {
-    reserved = true # Mandatory for Linux plans
   }
 }
