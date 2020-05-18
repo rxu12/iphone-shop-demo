@@ -50,15 +50,6 @@ resource "azurerm_app_service" "default" {
   resource_group_name = data.azurerm_resource_group.default.name
   app_service_plan_id = azurerm_app_service_plan.default.id
 
-  service_principal {
-    client_id     = "${azuread_application.default.application_id}"
-    client_secret = "${azuread_service_principal_password.default.value}"
-  }
-
-  role_based_access_control {
-    enabled = true
-  }
-
   site_config {
     app_command_line = ""
     linux_fx_version = "DOCKER|${var.app_acr_name}:${var.docker_image_tag}"
@@ -68,6 +59,8 @@ resource "azurerm_app_service" "default" {
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
     DOCKER_REGISTRY_SERVER_URL          = "https://${var.acr_link}"
+    DOCKER_REGISTRY_SERVER_USERNAME = azuread_application.default.application_id
+    DOCKER_REGISTRY_SERVER_PASSWORD = azuread_service_principal_password.default.value
 
     # app specific environment variables can be defined in this block as well
     WEBSITES_PORT = 9000
