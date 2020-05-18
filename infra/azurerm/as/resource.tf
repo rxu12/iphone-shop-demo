@@ -3,6 +3,14 @@ provider "azurerm" {
   features {}
 }
 
+provider "azuread" {
+  version = "~> 0.8"
+}
+
+provider "random" {
+  version = "~> 2.2"
+}
+
 variable "app_name" {
   type        = string
   description = "Location of the azure resource group."
@@ -30,6 +38,8 @@ data "azurerm_resource_group" "default" {
   name = "${var.app_name}-rg"
 }
 
+data "azurerm_subscription" "current" {}
+
 # Create SP to pull from ACR
 
 resource "azuread_application" "default" {
@@ -52,7 +62,7 @@ resource "azuread_service_principal_password" "default" {
 }
 
 resource "azurerm_role_assignment" "appsvc_acr" {
-  scope                = "${data.azurerm_subscription.current.id}/resourceGroups/${data.azurerm_resource_group.default.name}/providers/Microsoft.ContainerRegistry/registries/${data.azurerm_container_registry.default.name}"
+  scope                = "${data.azurerm_subscription.current.id}/resourceGroups/${data.azurerm_resource_group.default.name}/providers/Microsoft.ContainerRegistry/registries/${var.app_acr_name}"
   role_definition_name = "Reader"
   principal_id         = azuread_service_principal.default.id
 }
