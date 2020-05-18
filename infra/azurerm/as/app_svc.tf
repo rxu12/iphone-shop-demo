@@ -91,7 +91,7 @@ resource "azurerm_app_service" "default" {
 
   site_config {
     app_command_line = ""
-    linux_fx_version = "DOCKER|${var.acr_link}/${var.app_acr_name}:${var.docker_image_tag}"
+    linux_fx_version = "DOCKER|${var.acr_link}/${var.app_name}:${var.docker_image_tag}"
     always_on        = true
   }
 
