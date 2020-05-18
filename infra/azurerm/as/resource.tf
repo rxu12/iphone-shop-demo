@@ -30,6 +30,35 @@ data "azurerm_resource_group" "default" {
   name = "${var.app_name}-rg"
 }
 
+# Create SP to pull from ACR
+
+resource "azuread_application" "default" {
+  name = "${var.app_name}-ad-app"
+}
+
+resource "azuread_service_principal" "default" {
+  application_id = azuread_application.default.application_id
+}
+
+resource "random_password" "password" {
+  length  = 32
+  special = true
+}
+
+resource "azuread_service_principal_password" "default" {
+  service_principal_id = azuread_service_principal.default.id
+  value                = random_password.password.result
+  end_date             = "2099-01-01T01:00:00Z"
+}
+
+resource "azurerm_role_assignment" "appsvc_acr" {
+  scope                = "${data.azurerm_subscription.current.id}/resourceGroups/${data.azurerm_resource_group.default.name}/providers/Microsoft.ContainerRegistry/registries/${data.azurerm_container_registry.default.name}"
+  role_definition_name = "Reader"
+  principal_id         = azuread_service_principal.default.id
+}
+
+# Define app svc and plan
+
 resource "azurerm_app_service_plan" "default" {
   name                = "${var.app_name}-asp"
   location            = data.azurerm_resource_group.default.location
