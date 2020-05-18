@@ -98,9 +98,9 @@ resource "azurerm_app_service" "default" {
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
     # app specific environment variables can be defined in this block as well
-    WEBSITES_PORT = 9000
-    DOCKER_REGISTRY_SERVER_URL          = "https://${var.acr_link}"
-    DOCKER_REGISTRY_SERVER_USERNAME = azuread_service_principal.default.id
+    WEBSITES_PORT                   = 9000
+    DOCKER_REGISTRY_SERVER_URL      = "https://${var.acr_link}"
+    DOCKER_REGISTRY_SERVER_USERNAME = azuread_application.default.application_id
     DOCKER_REGISTRY_SERVER_PASSWORD = azuread_service_principal_password.default.value
   }
 }
